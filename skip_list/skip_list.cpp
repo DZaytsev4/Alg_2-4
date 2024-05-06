@@ -1,21 +1,49 @@
 #include "..//skip_list/skip_list.h"
 #include <iostream>
+#include <locale>
+using namespace std;
 int main() {
     SkipList<int> skipList;
-    skipList.insert(3);
-    skipList.insert(6);
-    skipList.insert(9);
-    skipList.insert(2);
-
-    std::cout << "Is the skip list empty? " << (skipList.isEmpty() ? "Yes" : "No") << std::endl;
-
-    std::cout << "Searching for 6: " << (skipList.search(6) ? "Found" : "Not found") << std::endl;
-    std::cout << "Searching for 5: " << (skipList.search(5) ? "Found" : "Not found") << std::endl;
-
-    skipList.remove(6);
-    std::cout << "Searching for 6 after removal: " << (skipList.search(6) ? "Found" : "Not found") << std::endl;
-    std::cout << skipList;
-    skipList.clear();
-    std::cout << "Is the skip list empty after clearing? " << (skipList.isEmpty() ? "Yes" : "No") << std::endl;
-    return 0;
+    setlocale(LC_ALL,"Russian");
+    while (true) {
+        cout << "Что вы хотите сделать?" << endl;
+        cout << "1 - добавить элемент в список" << endl;
+        cout << "2 - проверить есть ли элемент в списке?" << endl;
+        cout << "3 - вывести все элементы из списка" << endl;
+        cout << "4 - удалить элемент" << endl;
+        cout << "5 - очистить таблицу" << endl;
+        cout << "6 - закрыть программу " << endl;
+        int act,x;
+        cin >> act;
+        switch (act) {
+        case 1:
+            cout << "Введите элемент: " ;
+            cin >> x;
+            skipList.insert(x);
+            break;
+        case 2:
+            cout << "Какой элемент вы хотите проверить?" << endl;
+            cin >> x;
+            if (skipList.search(x) == true) cout << "Данный элемент присутствует\n";
+            else cout << "Данный элемент отсутсвует \n";
+            break;
+        case 3:
+            cout << skipList << endl;
+            break;
+        case 4:
+            cout << "Какой элемент вы хотите удалить?\n";
+            cin >> x;
+            skipList.remove(x);
+            break;
+        case 5:
+            skipList.clear();
+            break;
+        case 6:
+            return 0;
+        default:
+            cout << "Неверный ввод" << endl;
+            break;
+        }
+        
+    }
 }
