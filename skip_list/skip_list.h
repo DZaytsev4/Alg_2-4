@@ -118,10 +118,15 @@ public:
     }
     friend ostream& operator<<(ostream& os, const SkipList& list) {
         typename SkipList<T>::Node* current = list.head->next[0];
-        while (current) { 
-            os << current->data << " "; 
-            current = current->next[0]; 
+        for (int i = list.currentLevel - 1; i >= 0; --i) {
+            os << "Уровень " << i + 1 << ": ";
+            typename SkipList<T>::Node* levelCurrent = list.head->next[i];
+            while (levelCurrent) {
+                os << levelCurrent->data << " ";
+                levelCurrent = levelCurrent->next[i];
+            }
+            os << endl;
         }
-        return os;  
+        return os;
     }
 };
