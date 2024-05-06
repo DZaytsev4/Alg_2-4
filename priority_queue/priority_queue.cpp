@@ -8,10 +8,11 @@ int main() {
     while (true) {
         cout << "Что вы хотите сделать?\n";
         cout << "1 - добавить элемент в очередь\n";
-        cout << "2 - взять элемент из вершины\n";
+        cout << "2 - посмотреть элемент из вершины\n";
         cout << "3 - проверить на пустоту\n";
         cout << "4 - посмотреть всю очередь\n";
-        cout << "5 - выйти из программы\n";
+        cout << "5 - извлечь элемент\n";
+        cout << "6 - выйти из программы\n";
         int act, x, p;
         cin >> act;
         switch (act) {
@@ -21,7 +22,7 @@ int main() {
             pr_q.insert(x, p);
             break;
         case 2:
-            cout << "Элемент: " << pr_q.pop().item << endl;
+            cout << "Элемент: " << pr_q.getMax().item << " Приоритет: "<< pr_q.getMax().prio<< endl;
             break;
         case 3:
             if (pr_q.isEmpty()) cout << "Очередь пуста\n";
@@ -31,6 +32,9 @@ int main() {
             cout << pr_q;
             break;
         case 5:
+            cout << "Вы извлекли элемент: " << pr_q.pop().item << endl;
+            break;
+        case 6:
             return 0;
             break;
         default:

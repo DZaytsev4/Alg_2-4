@@ -34,6 +34,12 @@ public:
         size--;
         return mas[size + 1];
     }
+    item getMax() {
+        if (isEmpty()) {
+            throw out_of_range("Queue is empty");
+        }
+        return mas[size];
+    }
     friend ostream& operator<<(ostream& os, const Priority_queue& queue) {
         for (int i = 0; i <= queue.size; ++i) {
             os << "Element: " << queue.mas[i].item << ", Priority: " << queue.mas[i].prio << endl;
