@@ -7,13 +7,13 @@ class Priority_queue {
         T item;
         int prio;
     };
-    item mas[100000];
+    static const int MAX_SIZE = 1000;
+    item mas[MAX_SIZE];
     int size = -1;
 
 public:
-    ~Priority_queue() {
-        delete[] mas;
-    }
+    Priority_queue() : mas{}, size(-1) {}
+    
     void insert(const T& elem, int pr) {
         size++;
         mas[size].item = elem;
